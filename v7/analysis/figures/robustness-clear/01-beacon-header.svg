@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="534.528pt" height="257.038531pt" viewBox="0 0 534.528 257.038531" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-10-09T10:21:19.601901</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.8.0, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 257.038531 
+L 534.528 257.038531 
+L 534.528 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 131.449622 123.18693 
+L 188.456108 123.18693 
+L 188.456108 91.811155 
+L 131.449622 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 131.449622 168.009465 
+L 188.456108 168.009465 
+L 188.456108 136.63369 
+L 131.449622 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 194.790162 123.18693 
+L 251.796649 123.18693 
+L 251.796649 91.811155 
+L 194.790162 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 194.790162 168.009465 
+L 251.796649 168.009465 
+L 251.796649 136.63369 
+L 194.790162 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 258.130703 123.18693 
+L 315.137189 123.18693 
+L 315.137189 91.811155 
+L 258.130703 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 258.130703 168.009465 
+L 315.137189 168.009465 
+L 315.137189 136.63369 
+L 258.130703 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 321.471243 123.18693 
+L 378.47773 123.18693 
+L 378.47773 91.811155 
+L 321.471243 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 321.471243 168.009465 
+L 378.47773 168.009465 
+L 378.47773 136.63369 
+L 321.471243 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 384.811784 123.18693 
+L 441.81827 123.18693 
+L 441.81827 91.811155 
+L 384.811784 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 384.811784 168.009465 
+L 441.81827 168.009465 
+L 441.81827 136.63369 
+L 384.811784 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #e7f0ef; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 448.152324 123.18693 
+L 505.158811 123.18693 
+L 505.158811 91.811155 
+L 448.152324 91.811155 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 448.152324 168.009465 
+L 505.158811 168.009465 
+L 505.158811 136.63369 
+L 448.152324 136.63369 
+z
+" clip-path="url(#pb18de1d6cd)" style="fill: #eef1f5; stroke: #ffffff; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="text_1">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="159.952865" y="76.290378" transform="rotate(-0 159.952865 76.290378)">帧控制</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="159.952865" y="111.354511" transform="rotate(-0 159.952865 111.354511)">2 B</text>
+   </g>
+   <g id="text_3">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="159.952865" y="156.177046" transform="rotate(-0 159.952865 156.177046)">2 B</text>
+   </g>
+   <g id="text_4">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="223.293405" y="76.290378" transform="rotate(-0 223.293405 76.290378)">时长</text>
+   </g>
+   <g id="text_5">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="223.293405" y="111.354511" transform="rotate(-0 223.293405 111.354511)">2 B</text>
+   </g>
+   <g id="text_6">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="223.293405" y="156.177046" transform="rotate(-0 223.293405 156.177046)">2 B</text>
+   </g>
+   <g id="text_7">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="286.633946" y="76.290378" transform="rotate(-0 286.633946 76.290378)">地址1</text>
+   </g>
+   <g id="text_8">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="286.633946" y="111.354511" transform="rotate(-0 286.633946 111.354511)">6 B</text>
+   </g>
+   <g id="text_9">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="286.633946" y="156.177046" transform="rotate(-0 286.633946 156.177046)">2 B</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="349.974486" y="76.290378" transform="rotate(-0 349.974486 76.290378)">地址2</text>
+   </g>
+   <g id="text_11">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="349.974486" y="111.354511" transform="rotate(-0 349.974486 111.354511)">6 B</text>
+   </g>
+   <g id="text_12">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="349.974486" y="156.177046" transform="rotate(-0 349.974486 156.177046)">2 B</text>
+   </g>
+   <g id="text_13">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="413.315027" y="76.290378" transform="rotate(-0 413.315027 76.290378)">地址3</text>
+   </g>
+   <g id="text_14">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="413.315027" y="111.354511" transform="rotate(-0 413.315027 111.354511)">6 B</text>
+   </g>
+   <g id="text_15">
+    <text style="fill: #168079; font: 700 14px 'Microsoft YaHei'; text-anchor: middle" x="413.315027" y="156.177046" transform="rotate(-0 413.315027 156.177046)">2 B</text>
+   </g>
+   <g id="text_16">
+    <text style="fill: #21334a; font: 500 12px 'Microsoft YaHei'; text-anchor: middle" x="476.655568" y="76.290378" transform="rotate(-0 476.655568 76.290378)">序列</text>
+   </g>
+   <g id="text_17">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="476.655568" y="111.354511" transform="rotate(-0 476.655568 111.354511)">2 B</text>
+   </g>
+   <g id="text_18">
+    <text style="fill: #21334a; font: 14px 'Microsoft YaHei'; text-anchor: middle" x="476.655568" y="156.177046" transform="rotate(-0 476.655568 156.177046)">2 B</text>
+   </g>
+   <g id="text_19">
+    <text style="fill: #21334a; font: 13px 'Microsoft YaHei'; text-anchor: end" x="118.781514" y="111.07912" transform="rotate(-0 118.781514 111.07912)">标准</text>
+   </g>
+   <g id="text_20">
+    <text style="fill: #21334a; font: 13px 'Microsoft YaHei'; text-anchor: end" x="118.781514" y="155.901656" transform="rotate(-0 118.781514 155.901656)">短地址</text>
+   </g>
+  </g>
+  <g id="text_21">
+   <text style="fill: #21334a; font: 700 18px 'Microsoft YaHei'; text-anchor: start" x="7.2" y="21.58875" transform="rotate(-0 7.2 21.58875)">Beacon：只有三个地址字段缩短</text>
+  </g>
+  <g id="text_22">
+   <text style="fill: #586779; font: 11px 'Microsoft YaHei'; text-anchor: start" x="7.2" y="247.104" transform="rotate(-0 7.2 247.104)">MAC 首部 24 → 12 B（每帧 −12 B）。这是首部结构，不是完整Beacon帧；帧体与 FCS 未改。</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pb18de1d6cd">
+   <rect x="58.608" y="53.712" width="468.72" height="159.12"/>
+  </clipPath>
+ </defs>
+</svg>

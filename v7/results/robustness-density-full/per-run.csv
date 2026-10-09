@@ -1,0 +1,9 @@
+study,profile,density,packet_bytes,control_loss_rate,duration_s,per_node_mbps,amsdu_bytes,run,mode,beacon_address,data_address,offered_packets,mac_accepted_packets,rx_packets,offered_completion_ratio,mac_pdr,topology_airtime_us,control_window_attempt_occupancy,data_airtime_us,airtime_us_per_delivered_kib,final_one_hop_f1,final_two_hop_f1,final_exact_both_ratio,mean_queue_delay_ms,p95_queue_delay_ms,injected_control_drops,control_rx,topology_tx_bytes
+density,medium,medium,0,0.0,35.0,0.25,0,81,A,standard,standard,91104,62201,61613,0.676293,0.990547,555040,0.158583,2.16291e+07,451.243,0.815233,0.694158,0,68.8558,0.978,0,11785,60006
+density,medium,medium,0,0.0,35.0,0.25,0,81,B,short,standard,91104,60532,60181,0.660575,0.994201,510420,0.145834,2.07335e+07,442.48,0.803419,0.666084,0.0625,24.4642,0.968,0,11688,60000
+density,medium,medium,0,0.0,35.0,0.25,0,81,C,standard,short,91104,62411,61879,0.679213,0.991476,555100,0.1586,2.13038e+07,442.754,0.811881,0.690722,0,51.2687,0.978,0,11796,60038
+density,medium,medium,0,0.0,35.0,0.25,0,81,D,short,short,91104,61712,61221,0.67199,0.992044,510396,0.145827,2.10369e+07,441.675,0.811881,0.6828,0.03125,53.7317,0.977,0,11794,59988
+density,dense,dense,0,0.0,35.0,0.25,0,81,A,standard,standard,92364,43933,43774,0.473929,0.996381,554980,0.158566,1.47904e+07,435.032,0.673889,0.539379,0,10.3953,0.96,0,10969,59954
+density,dense,dense,0,0.0,35.0,0.25,0,81,B,short,standard,92364,43877,43589,0.471926,0.993436,510260,0.145789,1.49397e+07,440.914,0.609091,0.444013,0,21.4825,0.97,0,11012,59908
+density,dense,dense,0,0.0,35.0,0.25,0,81,C,standard,short,92364,44324,44147,0.477968,0.996007,555076,0.158593,1.46097e+07,426.184,0.659365,0.529197,0,10.2692,0.966,0,11056,60010
+density,dense,dense,0,0.0,35.0,0.25,0,81,D,short,short,92364,44237,44005,0.47643,0.994756,510456,0.145845,1.47978e+07,433.192,0.656422,0.546313,0,20.4795,0.969,0,11050,60006

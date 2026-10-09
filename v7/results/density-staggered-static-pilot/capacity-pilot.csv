@@ -1,0 +1,3 @@
+density,contenders,run,control_tx,control_rx,final_one_hop_f1,final_two_hop_f1,final_exact_both_ratio,control_window_attempt_occupancy,topology_tx_crossed_window_boundary,offered_completion_ratio
+medium,8,81,2800,18375,1,1,1,0.159728,0,0.981229
+dense,8,81,2800,26775,1,1,1,0.159944,0,0.986184

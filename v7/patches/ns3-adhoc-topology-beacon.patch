@@ -1,0 +1,213 @@
+diff --git a/src/wifi/model/adhoc-wifi-mac.h b/src/wifi/model/adhoc-wifi-mac.h
+index 5497427..539e7d4 100644
+--- a/src/wifi/model/adhoc-wifi-mac.h
++++ b/src/wifi/model/adhoc-wifi-mac.h
+@@ -13,6 +13,8 @@
+ 
+ #include "wifi-mac.h"
+ 
++#include "ns3/traced-callback.h"
++
+ namespace ns3
+ {
+ 
+@@ -36,10 +38,38 @@ class AdhocWifiMac : public WifiMac
+     void SetLinkUpCallback(Callback<void> linkUp) override;
+     bool CanForwardPacketsTo(Mac48Address to) const override;
+ 
++    /**
++     * Queue a vendor-specific Action management frame in ad-hoc mode.
++     * The packet body must start with an IEEE 802.11 Action category field
++     * whose value is 127 (Vendor Specific).
++     */
++    void SendVendorSpecificAction(Ptr<Packet> packet, Mac48Address to);
++
++    /**
++     * Queue a genuine Beacon management frame in ad-hoc mode.
++     * topologyIe begins with the simulation-private IE id and length.
++     */
++    void SendTopologyBeacon(Ptr<Packet> topologyIe, Time beaconInterval);
++
++    /** Callback signature for received vendor-specific Action frames. */
++    typedef void (*VendorSpecificActionRxCallback)(Ptr<const Packet> packet,
++                                                   Mac48Address from,
++                                                   Mac48Address to);
++
++    /** Callback signature for the private topology IE carried by a Beacon. */
++    typedef void (*TopologyBeaconRxCallback)(Ptr<const Packet> topologyIe,
++                                             Mac48Address from,
++                                             Mac48Address to);
++
+   private:
+     void Receive(Ptr<const WifiMpdu> mpdu, uint8_t linkId) override;
+     void DoCompleteConfig() override;
+     void Enqueue(Ptr<WifiMpdu> mpdu, Mac48Address to, Mac48Address from) override;
++
++    TracedCallback<Ptr<const Packet>, Mac48Address, Mac48Address>
++        m_vendorSpecificActionRxTrace;
++    TracedCallback<Ptr<const Packet>, Mac48Address, Mac48Address>
++        m_topologyBeaconRxTrace;
+ };
+ 
+ } // namespace ns3
+diff --git a/src/wifi/model/adhoc-wifi-mac.cc b/src/wifi/model/adhoc-wifi-mac.cc
+index 23f1c4d..8023e70 100644
+--- a/src/wifi/model/adhoc-wifi-mac.cc
++++ b/src/wifi/model/adhoc-wifi-mac.cc
+@@ -10,7 +10,11 @@
+ 
+ #include "adhoc-wifi-mac.h"
+ 
++#include "ht/ht-operation.h"
++#include "mgt-action-headers.h"
++#include "mgt-headers.h"
+ #include "qos-txop.h"
++#include "supported-rates.h"
+ 
+ #include "ns3/eht-capabilities.h"
+ #include "ns3/he-capabilities.h"
+@@ -32,7 +36,19 @@ AdhocWifiMac::GetTypeId()
+     static TypeId tid = TypeId("ns3::AdhocWifiMac")
+                             .SetParent<WifiMac>()
+                             .SetGroupName("Wifi")
+-                            .AddConstructor<AdhocWifiMac>();
++                            .AddConstructor<AdhocWifiMac>()
++                            .AddTraceSource(
++                                "VendorSpecificActionRx",
++                                "A vendor-specific Action management frame received by an "
++                                "ad-hoc station.",
++                                MakeTraceSourceAccessor(
++                                    &AdhocWifiMac::m_vendorSpecificActionRxTrace),
++                                "ns3::AdhocWifiMac::VendorSpecificActionRxCallback")
++                            .AddTraceSource(
++                                "TopologyBeaconRx",
++                                "A topology Information Element received in a Beacon frame.",
++                                MakeTraceSourceAccessor(&AdhocWifiMac::m_topologyBeaconRxTrace),
++                                "ns3::AdhocWifiMac::TopologyBeaconRxCallback");
+     return tid;
+ }
+ 
+@@ -60,6 +76,79 @@ AdhocWifiMac::CanForwardPacketsTo(Mac48Address to) const
+     return true;
+ }
+ 
++void
++AdhocWifiMac::SendVendorSpecificAction(Ptr<Packet> packet, Mac48Address to)
++{
++    NS_LOG_FUNCTION(this << packet << to);
++    NS_ABORT_MSG_IF(!packet || packet->GetSize() < 2,
++                    "A vendor-specific Action body must contain category and action fields");
++
++    WifiActionHeader action;
++    packet->PeekHeader(action);
++    NS_ABORT_MSG_IF(action.GetCategory() != WifiActionHeader::VENDOR_SPECIFIC_ACTION,
++                    "The Action category must be Vendor Specific (127)");
++
++    WifiMacHeader hdr(WIFI_MAC_MGT_ACTION);
++    Ptr<WifiMpdu> mpdu = Create<WifiMpdu>(packet, hdr);
++    Enqueue(mpdu, to, GetAddress());
++}
++
++void
++AdhocWifiMac::SendTopologyBeacon(Ptr<Packet> topologyIe, Time beaconInterval)
++{
++    NS_LOG_FUNCTION(this << topologyIe << beaconInterval);
++    NS_ABORT_MSG_IF(!topologyIe || topologyIe->GetSize() < 5,
++                    "Topology Beacon must carry a complete topology IE");
++
++    // Construct the minimum 802.11n Beacon body used by this experiment.
++    // The private topology IE remains packet payload and therefore follows
++    // all standard Information Elements serialized by MgtBeaconHeader.
++    MgtBeaconHeader beacon;
++    beacon.Get<Ssid>() = Ssid("");
++
++    AllSupportedRates rates;
++    for (const uint64_t rate : {6000000ULL,
++                                9000000ULL,
++                                12000000ULL,
++                                18000000ULL,
++                                24000000ULL,
++                                36000000ULL,
++                                48000000ULL,
++                                54000000ULL})
++    {
++        rates.AddSupportedRate(rate);
++    }
++    rates.SetBasicRate(6000000);
++    rates.SetBasicRate(12000000);
++    rates.SetBasicRate(24000000);
++    beacon.Get<SupportedRates>() = rates.rates;
++    beacon.SetBeaconIntervalUs(beaconInterval.GetMicroSeconds());
++    beacon.Capabilities().SetIbss();
++    beacon.Capabilities().SetShortSlotTime(true);
++
++    if (GetHtSupported(SINGLE_LINK_OP_ID))
++    {
++        beacon.Get<HtCapabilities>() = GetHtCapabilities(SINGLE_LINK_OP_ID);
++        HtOperation operation;
++        operation.SetPrimaryChannel(36);
++        operation.SetStaChannelWidth(0); // 20 MHz
++        operation.SetHtProtection(NO_PROTECTION);
++        operation.SetBasicMcsSet(1, 0); // MCS 0 is the basic HT MCS
++        beacon.Get<HtOperation>() = operation;
++    }
++    topologyIe->AddHeader(beacon);
++
++    WifiMacHeader hdr(WIFI_MAC_MGT_BEACON);
++    hdr.SetAddr1(Mac48Address::GetBroadcast());
++    hdr.SetAddr2(GetAddress());
++    hdr.SetAddr3(GetBssid(SINGLE_LINK_OP_ID));
++    hdr.SetDsNotFrom();
++    hdr.SetDsNotTo();
++    auto txop = GetQosSupported() ? StaticCast<Txop>(GetQosTxop(AC_VO)) : GetTxop();
++    NS_ASSERT(txop);
++    txop->Queue(Create<WifiMpdu>(topologyIe, hdr));
++}
++
+ void
+ AdhocWifiMac::Enqueue(Ptr<WifiMpdu> mpdu, Mac48Address to, Mac48Address from)
+ {
+@@ -111,7 +200,10 @@ AdhocWifiMac::Enqueue(Ptr<WifiMpdu> mpdu, Mac48Address to, Mac48Address from)
+     hdr.SetDsNotFrom();
+     hdr.SetDsNotTo();
+ 
+-    auto txop = hdr.IsQosData() ? StaticCast<Txop>(GetQosTxop(hdr.GetQosTid())) : GetTxop();
++    auto txop = hdr.IsQosData()
++                    ? StaticCast<Txop>(GetQosTxop(hdr.GetQosTid()))
++                    : (hdr.IsMgt() && GetQosSupported() ? StaticCast<Txop>(GetQosTxop(AC_VO))
++                                                        : GetTxop());
+     NS_ASSERT(txop);
+     txop->Queue(mpdu);
+ }
+@@ -181,6 +273,31 @@ AdhocWifiMac::Receive(Ptr<const WifiMpdu> mpdu, uint8_t linkId)
+         return;
+     }
+ 
++    if (hdr->IsBeacon())
++    {
++        Ptr<Packet> remaining = mpdu->GetPacket()->Copy();
++        MgtBeaconHeader beacon;
++        const uint32_t removed = remaining->RemoveHeader(beacon);
++        if (removed > 0 && remaining->GetSize() >= 5)
++        {
++            // Known standard IEs were consumed by MgtBeaconHeader. The private
++            // topology IE is deliberately left as the remaining packet body.
++            m_topologyBeaconRxTrace(remaining, from, to);
++        }
++        return;
++    }
++
++    if (hdr->IsAction() && mpdu->GetPacket()->GetSize() >= 2)
++    {
++        WifiActionHeader action;
++        mpdu->GetPacket()->PeekHeader(action);
++        if (action.GetCategory() == WifiActionHeader::VENDOR_SPECIFIC_ACTION)
++        {
++            m_vendorSpecificActionRxTrace(mpdu->GetPacket(), from, to);
++            return;
++        }
++    }
++
+     // Invoke the receive handler of our parent class to deal with any other frames
+     WifiMac::Receive(mpdu, linkId);
+ }

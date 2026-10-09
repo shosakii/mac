@@ -1,0 +1,5 @@
+density,contenders,run,control_tx,control_rx,final_one_hop_f1,final_two_hop_f1,final_exact_both_ratio,control_window_attempt_occupancy,topology_tx_crossed_window_boundary,offered_completion_ratio
+medium,4,81,1393,6278,0.839779,0.751855,0.046875,0.0791966,0,0.698718
+medium,6,81,2030,9168,0.828452,0.713204,0.046875,0.115443,0,0.702922
+dense,4,81,1393,7639,0.740741,0.700589,0,0.079408,0,0.576556
+dense,6,81,2030,10630,0.767372,0.678939,0,0.115728,0,0.577021

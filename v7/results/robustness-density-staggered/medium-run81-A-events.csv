@@ -1,0 +1,7 @@
+event_id,time_s,event_type,node,old_x,old_y,new_x,new_y,changed_links,affected_one_hop_nodes,affected_two_hop_nodes
+0,4.05,NODE_FAIL,27,90,90,90,90,8,8,20
+1,9.03,NODE_RECOVER,27,90,90,90,90,8,9,21
+2,14.07,NODE_MOVE,36,120,120,144,138,8,9,26
+3,19.04,NODE_MOVE,36,144,138,120,120,8,9,26
+4,24.08,NODE_FAIL,18,60,60,60,60,8,8,20
+5,29.06,NODE_RECOVER,18,60,60,60,60,8,9,21

@@ -1,0 +1,19 @@
+[PASS] medium seed=81 paired demands=91104
+[PASS] medium seed=82 paired demands=91104
+[PASS] medium seed=83 paired demands=91104
+[RUN] dense seed=81 mode=A
+[RUN] dense seed=81 mode=B
+[RUN] dense seed=81 mode=C
+[RUN] dense seed=81 mode=D
+[PASS] dense seed=81 paired demands=92364
+[RUN] dense seed=82 mode=A
+[RUN] dense seed=82 mode=B
+[RUN] dense seed=82 mode=C
+[RUN] dense seed=82 mode=D
+[PASS] dense seed=82 paired demands=92364
+[RUN] dense seed=83 mode=A
+[RUN] dense seed=83 mode=B
+[RUN] dense seed=83 mode=C
+[RUN] dense seed=83 mode=D
+[PASS] dense seed=83 paired demands=92364
+[DONE] 24 cases, 6 paired profiles in /home/sonder/ns3/ns-3.47/self-organizing-mac-v7/results/robustness-density-staggered
